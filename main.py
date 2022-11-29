@@ -2,6 +2,7 @@ import PySimpleGUI
 from datetime import datetime
 import math
 
+#creates window for user interface
 def createWindow():
     import PySimpleGUI as sg
     sg.theme('Default1')  # Add a little color to your windows
@@ -40,7 +41,7 @@ def createWindow():
 
     window.close()
 
-    
+#calculates the price of a bond given the relevant variables    
 def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
 
     if paymentFreq == 0:
