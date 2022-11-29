@@ -51,15 +51,7 @@ def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
         annualCashFlow = couponRate * faceVal
         cashPerPeriod = annualCashFlow / paymentFreq
         paymentRate = discRate / paymentFreq
-        # couponRate = couponRate / paymentFreq
-
-        # daysPerPayment = 365/paymentFreq
-
-        # today = datetime.today()
-        # timeDiff = (matDate - today).days  # number of days to maturity, returns a int
-        # numOfPayments = timeDiff/daysPerPayment
         numOfPayments = yearsToMat * paymentFreq
-
 
         DCF = 1-(pow(1+ paymentRate, -numOfPayments))
         DCF = DCF / paymentRate
