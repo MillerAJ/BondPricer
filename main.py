@@ -1,36 +1,6 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-
 import PySimpleGUI
 from datetime import datetime
 import math
-
-
-def createWindow2():
-    import PySimpleGUI as sg
-
-    sg.theme('BluePurple')
-
-    layout = [[sg.Text('Your typed chars appear here:'), sg.Text(size=(15, 1), key='-OUTPUT-')],
-              [sg.Input(key='-IN-')],
-              [sg.Button('Show'), sg.Button('Exit')]]
-
-    window = sg.Window('Pattern 2B', layout)
-
-    while True:  # Event Loop
-        event, values = window.read()
-        print(event, values)
-        if event == sg.WIN_CLOSED or event == 'Exit':
-            break
-        if event == 'Show':
-            # Update the "output" text element to be the value of "input" element
-            window['-OUTPUT-'].update(values['-IN-'])
-
-    window.close()
-
 
 def createWindow():
     import PySimpleGUI as sg
@@ -70,13 +40,8 @@ def createWindow():
 
     window.close()
 
+    
 def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
-
-    # faceVal = 10000
-    # couponRate = .05
-    # paymentFreq = 12
-    # yearsToMat = 15
-    # discRate = .15
 
     if paymentFreq == 0:
         discMatVal = faceVal / pow((1 + discRate), yearsToMat)
