@@ -25,8 +25,7 @@ def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
 #creates window for user interface
 def createWindow():
     import PySimpleGUI as sg
-    sg.theme('Default1')  # Add a little color to your windows
-    # All the stuff inside your window. This is the PSG magic code compactor...
+    sg.theme('Default1') 
     layout = [[sg.Text('Face Value/Par Value ($):'), sg.InputText()],
               [sg.Text('Annual Coupon Rate (%):'), sg.InputText()],
               [sg.Text('Discount Rate (%):'), sg.InputText()],
