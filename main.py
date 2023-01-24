@@ -2,6 +2,26 @@ import PySimpleGUI
 from datetime import datetime
 import math
 
+#calculates the price of a bond given the relevant variables    
+def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
+
+    if paymentFreq == 0:
+        discMatVal = faceVal / pow((1 + discRate), yearsToMat)
+        print(round(discMatVal, 2))
+    else:
+        annualCashFlow = couponRate * faceVal
+        cashPerPeriod = annualCashFlow / paymentFreq
+        paymentRate = discRate / paymentFreq
+        numOfPayments = yearsToMat * paymentFreq
+
+        DCF = 1-(pow(1+ paymentRate, -numOfPayments))
+        DCF = DCF / paymentRate
+        DCF = cashPerPeriod * DCF
+        discMatVal = faceVal/pow((1+paymentRate), numOfPayments)
+
+        return round(DCF + discMatVal, 2)
+
+
 #creates window for user interface
 def createWindow():
     import PySimpleGUI as sg
@@ -41,23 +61,6 @@ def createWindow():
 
     window.close()
 
-#calculates the price of a bond given the relevant variables    
-def bondCalc(faceVal,couponRate,discRate,yearsToMat,paymentFreq):
 
-    if paymentFreq == 0:
-        discMatVal = faceVal / pow((1 + discRate), yearsToMat)
-        print(round(discMatVal, 2))
-    else:
-        annualCashFlow = couponRate * faceVal
-        cashPerPeriod = annualCashFlow / paymentFreq
-        paymentRate = discRate / paymentFreq
-        numOfPayments = yearsToMat * paymentFreq
-
-        DCF = 1-(pow(1+ paymentRate, -numOfPayments))
-        DCF = DCF / paymentRate
-        DCF = cashPerPeriod * DCF
-        discMatVal = faceVal/pow((1+paymentRate), numOfPayments)
-
-        return round(DCF + discMatVal, 2)
 
 createWindow()
